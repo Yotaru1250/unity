@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextMenu : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,6 +16,8 @@ public class NextMenu : MonoBehaviour {
 
 
 	 public void OnClick() {
-			SceneManager.LoadScene ("Menu");
+        Time.timeScale = 1f;    //時間再開
+        Cursor.lockState = CursorLockMode.Confined;//カーソルをウィンドウ内に
+        SceneManager.LoadScene ("Menu");
 	 }
 }

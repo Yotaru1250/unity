@@ -22,7 +22,6 @@ public class NextGame : MonoBehaviour {
 	if(pauseUI.activeSelf) {
       pauseUI.SetActive (!pauseUI.activeSelf);
     	Time.timeScale = 1f;
-		Cursor.visible = false;	
 	 }
 	}
 

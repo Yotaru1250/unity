@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
- 
+
+
+
 public class Message : MonoBehaviour {
  
 	//　メッセージUI
@@ -36,23 +38,26 @@ public class Message : MonoBehaviour {
 	private bool isEndMessage = false;
  
 	void Start () {
-		clickIcon = transform.Find("Panel/Image").GetComponent<Image>();
+
+        clickIcon = transform.Find("Panel/Image").GetComponent<Image>();
 		clickIcon.enabled = false;
 		messageText = GetComponentInChildren<Text>();
 		messageText.text = "";
 		SetMessage("あなたは廃アパートの探索にきました。\n"
-                    + "光を目指してここから出ましょう\n"
+                    + "光を目指しここから出ましょう。\n"
                     +"\n"
 
-                    + "w：↑    a：←    s：↓    d：→　\n"
-                    + "Esc：メニュー\n"
+                    + "w ↑    a ←    s ↓    d →　\n"
+                       
 
                     );
 	}
  
 	void Update () {
-		//　メッセージが終わっていない、または設定されている
-		if (isEndMessage || message == null) {
+
+
+        //　メッセージが終わっていない、または設定されている
+        if (isEndMessage || message == null) {
 			return;
 		}
  
@@ -101,19 +106,22 @@ public class Message : MonoBehaviour {
 				}
 			}
 		//　1回に表示するメッセージを表示した
-		} else {
+		} else
+         {
  
 			elapsedTime += Time.deltaTime;
  
 			//　クリックアイコンを点滅する時間を超えた時、反転させる
-			if(elapsedTime >= clickFlashTime) {
+			if(elapsedTime >= clickFlashTime) 
+            {
 				clickIcon.enabled = !clickIcon.enabled;
 				elapsedTime = 0f;
 			}
  
 			//　マウスクリックされたら次の文字表示処理
-			if(Input.GetMouseButtonDown (1)) {
-				Debug.Log (messageText.text.Length);
+			if(Input.GetMouseButtonDown (1))
+             {
+				//Debug.Log (messageText.text.Length);
 				messageText.text = "";
 				nowLine = 0;
 				clickIcon.enabled = false;
@@ -122,14 +130,18 @@ public class Message : MonoBehaviour {
 				isOneMessage = false;
  
 				//　メッセージが全部表示されていたらゲームオブジェクト自体の削除
-				if(nowTextNum >= message.Length) {
+				if(nowTextNum >= message.Length) 
+                {
 					nowTextNum = 0;
 					isEndMessage = true;
 					transform.GetChild (0).gameObject.SetActive (false);
 				//　それ以外はテキスト処理関連を初期化して次の文字から表示させる
 				}
+				          
 			}
 		}
+
+
 	}
  
 	void SetMessage(string message) {
